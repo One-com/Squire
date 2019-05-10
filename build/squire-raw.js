@@ -2885,7 +2885,11 @@ proto.moveCursorToEnd = function () {
 };
 
 var getWindowSelection = function ( self ) {
-    return self._win.getSelection() || null;
+    try {
+        return self._win.getSelection() || null;
+    } catch (e) {
+        return null;
+    }
 };
 
 proto.setSelection = function ( range ) {
